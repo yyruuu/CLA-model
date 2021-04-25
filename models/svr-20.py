@@ -48,6 +48,8 @@ time_data = pd.read_excel("../data/time.xlsx").values
 time_data = time_data[N_TRAIN_WEEKS+TIME_STEPS+1:]
 time_data = time_data.reshape(len(time_data),)
 values = data.iloc[:, 1:]
+# for NH3-N
+# values[['0', '3']] = values[['3', '0']]
 # 2. 归一化
 scaled, scaler = normalization(values)
 

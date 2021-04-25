@@ -37,12 +37,14 @@ BATCH_SIZE = 24
 # 1. 读取数据
 data = pd.read_csv("../data/denoise.csv")
 
-print("data shape", data.shape)
-# data的第一列是index，第二列才是time
 time_data = pd.read_excel("../data/time.xlsx").values
 time_data = time_data[N_TRAIN_WEEKS+TIME_STEPS+1:]
 time_data = time_data.reshape(len(time_data),)
 values = data.iloc[:, 1:]
+
+# for NH3-N prediction
+# values[['0', '3']] = values[['3', '0']]
+
 # 2. 归一化
 scaled, scaler = normalization(values)
 
